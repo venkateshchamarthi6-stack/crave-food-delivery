@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRAVE — Good food. Great mood. Discover top local restaurants and get your favorite meals delivered blazing fast to your doorstep.">
+  <meta name="theme-color" content="#FF6B35">
+  <title>CRAVE | Good food. Great mood.</title>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="promo-top-bar" aria-label="Special promotion">
+    <div class="container promo-content">
+      <span class="promo-badge">FIRST ORDER OFFER</span>
+      <p>Use code <strong class="promo-code">CRAVE50</strong> for 50% OFF up to &#8377;120 on your first 3 deliveries!</p>
+      <a href="#offers" class="promo-link">Claim Offer &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Header & Navigation Bar -->
+  <header class="main-header" id="navbar">
+    <nav class="nav-container container" aria-label="Main Navigation">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="CRAVE Homepage">
+        <span class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V14h-1v2.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V11c0-1.66 1.34-3 3-3h1c1.66 0 3 1.34 3 3v3h-1v2.5h-1v-2.5zm4.5-.5c0 .55-.45 1-1 1s-1-.45-1-1V8.5c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5V16z"/>
+          </svg>
+        </span>
+        <span class="brand-name">CRAVE<span class="dot-accent">.</span></span>
+      </a>
+
+      <!-- Location Selector UI -->
+      <div class="location-picker" id="locationPicker" role="button" tabindex="0" aria-label="Select delivery location">
+        <svg class="loc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <div class="loc-text">
+          <span class="loc-label">Deliver to</span>
+          <span class="loc-value" id="currentLocation">Indiranagar, Bengaluru</span>
+        </div>
+        <svg class="loc-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-item active">Home</a></li>
+        <li><a href="#categories" class="nav-item">Explore</a></li>
+        <li><a href="#restaurants" class="nav-item">Restaurants</a></li>
+        <li><a href="#offers" class="nav-item">Offers</a></li>
+        <li><a href="#contact" class="nav-item">Contact</a></li>
+      </ul>
+
+      <!-- Nav Action Controls -->
+      <div class="nav-actions">
+        <!-- Quick Search Trigger -->
+        <a href="#searchSection" class="action-btn" aria-label="Search food">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Cart Icon with Live Counter -->
+        <button class="action-btn cart-btn" id="cartToggleBtn" aria-label="Open food cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-badge" id="cartCount">2</span>
+        </button>
+
+        <!-- Sign In CTA -->
+        <button class="btn btn-primary btn-signin" id="openSignInBtn">
+          <span>Sign In</span>
+        </button>
+
+        <!-- Mobile Hamburger -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-location-box">
+        <span class="loc-label">Current Address</span>
+        <strong id="mobileCurrentLocation">Indiranagar, Bengaluru</strong>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-nav-link">Home</a></li>
+        <li><a href="#categories" class="mobile-nav-link">Explore Categories</a></li>
+        <li><a href="#restaurants" class="mobile-nav-link">Popular Restaurants</a></li>
+        <li><a href="#offers" class="mobile-nav-link">Special Offers</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact &amp; Help</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <button class="btn btn-primary btn-block" id="mobileSignInBtn">Sign In or Register</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="container hero-grid">
+        
+        <!-- Left: Hero Headline & Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-icon">⚡</span>
+            <span class="badge-text">25-30 Mins Express Delivery</span>
+          </div>
+
+          <h1 class="hero-title">
+            Your cravings.<br>
+            <span class="text-gradient">Delivered with love.</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover your favorite meals, explore amazing restaurants, and enjoy delicious food delivered right to your doorstep with real-time temperature tracking.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#restaurants" class="btn btn-primary btn-lg">
+              <span>Explore Restaurants</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#offers" class="btn btn-secondary btn-lg">
+              <span>View Offers</span>
+            </a>
+          </div>
+
+          <!-- Hero Metrics & Social Proof -->
+          <div class="hero-proof">
+            <div class="avatar-stack">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Customer review" class="avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Customer review" class="avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Customer review" class="avatar">
+              <span class="avatar-more">+15k</span>
+            </div>
+            <div class="proof-text">
+              <strong>15,000+ Happy Foodies</strong>
+              <span>Ordering every single day</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Modern Visual Showcase -->
+        <div class="hero-visual">
+          <div class="hero-visual-frame">
+            <img 
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=85" 
+              alt="Gourmet food delivery spread with burgers, pizzas, and salads" 
+              class="hero-food-img"
+              loading="eager"
+            >
+
+            <!-- Floating Offer Badge Card -->
+            <div class="floating-card offer-card">
+              <div class="card-icon-box orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+              </div>
+              <div>
+                <span class="card-sub">LIMITED PROMO</span>
+                <strong class="card-highlight">50% OFF up to &#8377;100</strong>
+                <span class="card-sub-code">Code: <b>CRAVE50</b></span>
+              </div>
+            </div>
+
+            <!-- Floating Delivery Tracker Card -->
+            <div class="floating-card delivery-card">
+              <div class="delivery-status-indicator">
+                <span class="pulse-ring"></span>
+                <span class="pulse-center"></span>
+              </div>
+              <div class="delivery-info">
+                <span class="card-sub">ON THE WAY</span>
+                <strong class="card-delivery-time">18 mins away</strong>
+                <span class="card-sub-rider">Rider Rajesh &bull; Fresh &amp; Steaming</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTEGRATED SEARCH & LOCATION SECTION -->
+    <section class="search-section" id="searchSection">
+      <div class="container">
+        <div class="search-card-wrapper">
+          <div class="search-bar-grid">
+            
+            <!-- Location Sub-Input -->
+            <div class="search-input-group location-group">
+              <label for="searchLocationInput" class="input-label">Delivery Location</label>
+              <div class="input-with-icon">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input 
+                  type="text" 
+                  id="searchLocationInput" 
+                  value="Indiranagar, Bengaluru" 
+                  placeholder="Enter your street or landmark..."
+                  aria-label="Enter delivery location"
+                >
+              </div>
+            </div>
+
+            <div class="search-divider"></div>
+
+            <!-- Food / Restaurant Search -->
+            <div class="search-input-group food-group">
+              <label for="searchInput" class="input-label">Find Food or Restaurant</label>
+              <div class="input-with-icon">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                  type="text" 
+                  id="searchInput" 
+                  placeholder="Search pizza, biryani, burgers, pasta..."
+                  aria-label="Search dishes or restaurants"
+                >
+              </div>
+            </div>
+
+            <!-- Submit CTA -->
+            <button class="btn btn-primary btn-search" id="searchSubmitBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Find Food</span>
+            </button>
+
+          </div>
+
+          <!-- Quick Filter Badges -->
+          <div class="quick-filters">
+            <span class="filter-hint">Trending Now:</span>
+            <button class="filter-tag" data-query="Pizza">🍕 Pizza</button>
+            <button class="filter-tag" data-query="Burgers">🍔 Juicy Burgers</button>
+            <button class="filter-tag" data-query="Biryani">🍚 Dum Biryani</button>
+            <button class="filter-tag" data-query="Healthy">🥗 Healthy Bowls</button>
+            <button class="filter-tag" data-query="Desserts">🍰 Sweet Bakery</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOD CATEGORIES SECTION -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="section-tag">EXPLORE DELICACIES</span>
+            <h2 class="section-title">What are you craving today?</h2>
+          </div>
+          <div class="category-nav-controls">
+            <button class="btn-scroll-arrow" id="catScrollLeft" aria-label="Scroll categories left">&larr;</button>
+            <button class="btn-scroll-arrow" id="catScrollRight" aria-label="Scroll categories right">&rarr;</button>
+          </div>
+        </div>
+
+        <!-- 8 Required Categories Grid -->
+        <div class="categories-carousel" id="categoriesCarousel">
+          
+          <!-- Category 1: Pizza -->
+          <div class="category-card" data-category="Pizza" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" alt="Cheesy oven-baked artisanal pizza" loading="lazy">
+            </div>
+            <h3 class="category-name">Pizza</h3>
+            <span class="category-count">28 Options</span>
+          </div>
+
+          <!-- Category 2: Burgers -->
+          <div class="category-card" data-category="Burgers" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Stacked double cheese smash burger" loading="lazy">
+            </div>
+            <h3 class="category-name">Burgers</h3>
+            <span class="category-count">34 Options</span>
+          </div>
+
+          <!-- Category 3: Biryani -->
+          <div class="category-card" data-category="Biryani" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80" alt="Aromatic saffron dum biryani" loading="lazy">
+            </div>
+            <h3 class="category-name">Biryani</h3>
+            <span class="category-count">19 Options</span>
+          </div>
+
+          <!-- Category 4: Chinese -->
+          <div class="category-card" data-category="Chinese" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" alt="Sizzling wok tossed hakka noodles" loading="lazy">
+            </div>
+            <h3 class="category-name">Chinese</h3>
+            <span class="category-count">26 Options</span>
+          </div>
+
+          <!-- Category 5: Desserts -->
+          <div class="category-card" data-category="Desserts" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80" alt="Glazed artisan chocolate cakes and pastries" loading="lazy">
+            </div>
+            <h3 class="category-name">Desserts</h3>
+            <span class="category-count">42 Options</span>
+          </div>
+
+          <!-- Category 6: Healthy Food -->
+          <div class="category-card" data-category="Healthy Food" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" alt="Nutritious avocado quinoa garden salad" loading="lazy">
+            </div>
+            <h3 class="category-name">Healthy Food</h3>
+            <span class="category-count">18 Options</span>
+          </div>
+
+          <!-- Category 7: South Indian -->
+          <div class="category-card" data-category="South Indian" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=400&q=80" alt="Crispy golden ghee roast masala dosa" loading="lazy">
+            </div>
+            <h3 class="category-name">South Indian</h3>
+            <span class="category-count">22 Options</span>
+          </div>
+
+          <!-- Category 8: Beverages -->
+          <div class="category-card" data-category="Beverages" role="button" tabindex="0">
+            <div class="category-img-box">
+              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=400&q=80" alt="Refreshing cold pressed berry iced mocktails" loading="lazy">
+            </div>
+            <h3 class="category-name">Beverages</h3>
+            <span class="category-count">31 Options</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- POPULAR RESTAURANTS SECTION -->
+    <section class="restaurants-section" id="restaurants">
+      <div class="container">
+        
+        <div class="section-header">
+          <div>
+            <span class="section-tag">TOP RATED PARTNERS</span>
+            <h2 class="section-title">Popular near you</h2>
+            <p class="section-subtext">Verified hygiene-certified kitchens serving exceptional flavor, delivered at lightning speed.</p>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="rest-filter-tabs">
+            <button class="rest-tab-btn active" data-filter="all">All</button>
+            <button class="rest-tab-btn" data-filter="fast">Fast Delivery (&lt;25m)</button>
+            <button class="rest-tab-btn" data-filter="rating">Top Rated (4.7+)</button>
+            <button class="rest-tab-btn" data-filter="free">Free Delivery</button>
+          </div>
+        </div>
+
+        <!-- 6 Required Restaurant Cards Grid -->
+        <div class="restaurants-grid" id="restaurantsGrid">
+          
+          <!-- Restaurant 1: Urban Spice -->
+          <article class="restaurant-card" data-tags="all fast free" data-cuisine="Indian Cuisine" data-rating="4.6" data-delivery="25">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80" alt="Urban Spice signature butter chicken and garlic naan" loading="lazy">
+              <span class="offer-pill">20% OFF UP TO &#8377;100</span>
+              <button class="btn-favorite" aria-label="Add Urban Spice to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Urban Spice</h3>
+                <span class="rating-badge">&#9733; 4.6</span>
+              </div>
+              <p class="cuisine-type">Indian Cuisine &bull; Mughlai &bull; Tandoor</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>25-30 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item text-green">
+                  <span>Free Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;350 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Butter Chicken Thali" data-rest="Urban Spice" data-price="289">
+                  + Add Special (&#8377;289)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Urban Spice">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Restaurant 2: Burger District -->
+          <article class="restaurant-card" data-tags="all fast" data-cuisine="Burgers & Fries" data-rating="4.8" data-delivery="20">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80" alt="Gourmet smash burgers with peri peri crinkle fries" loading="lazy">
+              <span class="offer-pill special-offer">FLAT &#8377;120 OFF</span>
+              <button class="btn-favorite" aria-label="Add Burger District to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Burger District</h3>
+                <span class="rating-badge">&#9733; 4.8</span>
+              </div>
+              <p class="cuisine-type">Burgers &amp; Fries &bull; American &bull; Shakes</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>20-25 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;29 Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;400 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Truffle Cheese Smash Burger" data-rest="Burger District" data-price="249">
+                  + Add Special (&#8377;249)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Burger District">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Restaurant 3: Napoli House -->
+          <article class="restaurant-card" data-tags="all rating free" data-cuisine="Italian & Pizza" data-rating="4.7" data-delivery="30">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80" alt="Wood-fired Neapolitan Margherita pizza with fresh basil" loading="lazy">
+              <span class="offer-pill">FREE GARLIC BREAD</span>
+              <button class="btn-favorite" aria-label="Add Napoli House to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Napoli House</h3>
+                <span class="rating-badge">&#9733; 4.7</span>
+              </div>
+              <p class="cuisine-type">Italian &amp; Pizza &bull; Wood Fired &bull; Pastas</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>30-35 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item text-green">
+                  <span>Free Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;550 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Classic Margherita Pizza" data-rest="Napoli House" data-price="349">
+                  + Add Special (&#8377;349)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Napoli House">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Restaurant 4: Wok Street -->
+          <article class="restaurant-card" data-tags="all fast" data-cuisine="Asian Cuisine" data-rating="4.5" data-delivery="25">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80" alt="Spicy ramen bowl with steamed dumplings" loading="lazy">
+              <span class="offer-pill">15% OFF ORDERS OVER &#8377;499</span>
+              <button class="btn-favorite" aria-label="Add Wok Street to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Wok Street</h3>
+                <span class="rating-badge">&#9733; 4.5</span>
+              </div>
+              <p class="cuisine-type">Asian Cuisine &bull; Dim Sum &bull; Bowls</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>25-30 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;35 Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;450 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Kung Pao Chicken Bowl" data-rest="Wok Street" data-price="279">
+                  + Add Special (&#8377;279)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Wok Street">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Restaurant 5: Sweet Crumbs -->
+          <article class="restaurant-card" data-tags="all rating fast free" data-cuisine="Desserts & Bakery" data-rating="4.9" data-delivery="18">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Belgian dark chocolate fudge cake with fresh strawberries" loading="lazy">
+              <span class="offer-pill special-offer">BUY 1 GET 1 ON DESSERTS</span>
+              <button class="btn-favorite" aria-label="Add Sweet Crumbs to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Sweet Crumbs</h3>
+                <span class="rating-badge">&#9733; 4.9</span>
+              </div>
+              <p class="cuisine-type">Desserts &amp; Bakery &bull; Waffles &bull; Ice Cream</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>15-20 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item text-green">
+                  <span>Free Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;300 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Fudge Molten Lava Jar" data-rest="Sweet Crumbs" data-price="199">
+                  + Add Special (&#8377;199)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Sweet Crumbs">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Restaurant 6: Green Bowl -->
+          <article class="restaurant-card" data-tags="all fast free" data-cuisine="Healthy Food" data-rating="4.6" data-delivery="22">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80" alt="Mediterranean roasted chickpea and hummus power bowl" loading="lazy">
+              <span class="offer-pill">10% OFF HEALTHY BOWLS</span>
+              <button class="btn-favorite" aria-label="Add Green Bowl to favorites">&hearts;</button>
+            </div>
+            <div class="card-content">
+              <div class="card-title-row">
+                <h3 class="restaurant-name">Green Bowl</h3>
+                <span class="rating-badge">&#9733; 4.6</span>
+              </div>
+              <p class="cuisine-type">Healthy Food &bull; Keto &bull; Organic Salads</p>
+              
+              <div class="meta-row">
+                <div class="meta-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>20-25 mins</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item text-green">
+                  <span>Free Delivery</span>
+                </div>
+                <span class="meta-dot">&bull;</span>
+                <div class="meta-item">
+                  <span>&#8377;380 for two</span>
+                </div>
+              </div>
+
+              <div class="card-action-row">
+                <button class="btn btn-outline-sm btn-quick-add" data-dish="Avocado Quinoa Power Bowl" data-rest="Green Bowl" data-price="299">
+                  + Add Special (&#8377;299)
+                </button>
+                <button class="btn btn-primary-sm view-rest-btn" data-rest="Green Bowl">View Menu</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="section-footer-cta">
+          <button class="btn btn-secondary btn-lg" id="loadMoreRestBtn">View All 140+ Restaurants Nearby</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROMOTIONS & DEALS BANNER SECTION -->
+    <section class="offers-section" id="offers">
+      <div class="container">
+        
+        <div class="offers-hero-card">
+          <div class="offers-text-side">
+            <span class="promo-pill">CRAVE SPECIAL PASS</span>
+            <h2 class="offers-title">Unlimited Free Delivery for 30 Days</h2>
+            <p class="offers-desc">Upgrade to CRAVE+ membership at zero cost for your first month. No surge fee, priority dispatch, and extra 15% cashback on every meal.</p>
+            
+            <div class="coupon-badges">
+              <div class="coupon-box" data-code="CRAVE50">
+                <span class="coupon-label">Code:</span>
+                <strong class="coupon-text">CRAVE50</strong>
+                <span class="copy-tag">Click to Copy</span>
+              </div>
+              <div class="coupon-box" data-code="FREEDEL">
+                <span class="coupon-label">Code:</span>
+                <strong class="coupon-text">FREEDEL</strong>
+                <span class="copy-tag">Click to Copy</span>
+              </div>
+              <div class="coupon-box" data-code="PARTY150">
+                <span class="coupon-label">Code:</span>
+                <strong class="coupon-text">PARTY150</strong>
+                <span class="copy-tag">Click to Copy</span>
+              </div>
+            </div>
+
+            <a href="#restaurants" class="btn btn-primary btn-lg mt-4">Order Now &amp; Save</a>
+          </div>
+
+          <div class="offers-img-side">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80" alt="Delicious barbecue skewers and party food" class="offers-img">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW CRAVE WORKS -->
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-header text-center max-w-600">
+          <span class="section-tag">EFFORTLESS EXPERIENCE</span>
+          <h2 class="section-title">How CRAVE delivers happiness</h2>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="step-heading">Set Delivery Location</h3>
+            <p class="step-desc">Enter your exact address or let our GPS auto-detect your location to unlock the best neighborhood kitchens.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+              </svg>
+            </div>
+            <h3 class="step-heading">Choose Your Favorites</h3>
+            <p class="step-desc">Browse through hundreds of curated dishes, read verified ratings, customize ingredients, and add to your bag.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <h3 class="step-heading">Express Live Delivery</h3>
+            <p class="step-desc">Track your rider on an interactive map. Enjoy your food served piping hot, sealed in insulated thermal bags.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE APP TEASER SECTION -->
+    <section class="app-teaser-section">
+      <div class="container">
+        <div class="app-banner-grid">
+          <div class="app-text">
+            <span class="section-tag">GET THE APP</span>
+            <h2 class="app-title">Faster ordering is in your pocket</h2>
+            <p class="app-desc">Download the CRAVE mobile app on iOS and Android for live GPS driver tracking, exclusive app-only flash sales, and instant order reorders.</p>
+            
+            <div class="store-buttons">
+              <button class="store-btn" aria-label="Download on the App Store">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.84c.64-.78 1.08-1.86.96-2.95-1 .04-2.17.65-2.83 1.42-.58.67-1.09 1.77-.96 2.82 1.11.09 2.22-.56 2.83-1.29z"/>
+                </svg>
+                <div class="store-btn-text">
+                  <small>Download on the</small>
+                  <strong>App Store</strong>
+                </div>
+              </button>
+
+              <button class="store-btn" aria-label="Get it on Google Play">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5.39 0 .78.16 1.06.44L17.5 12 5.56 21.56c-.28.28-.67.44-1.06.44-.83 0-1.5-.67-1.5-1.5zm16.5-7.5l2.25 1.29c.67.39.67 1.03 0 1.42L19.5 17l-3.5-3.5 3.5-3.5z"/>
+                </svg>
+                <div class="store-btn-text">
+                  <small>GET IT ON</small>
+                  <strong>Google Play</strong>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="app-mockup-frame">
+            <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=700&q=80" alt="CRAVE rider delivering delicious order" class="app-rider-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & SUPPORT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-text">
+            <span class="section-tag">24/7 DEDICATED SUPPORT</span>
+            <h2 class="contact-title">Have a question or craving help?</h2>
+            <p class="contact-desc">Our customer experience team is always ready to assist you with order status, restaurant partnerships, or corporate bulk meals.</p>
+            <div class="contact-stats">
+              <div class="c-stat">
+                <strong>&lt; 2 mins</strong>
+                <span>Average Chat Response</span>
+              </div>
+              <div class="c-stat">
+                <strong>99.4%</strong>
+                <span>On-Time Delivery Rate</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="quick-inquiry-form" id="contactForm">
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" placeholder="e.g. Rahul Verma" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" placeholder="rahul@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">How can we help you?</label>
+              <textarea id="contactMessage" rows="3" placeholder="Order inquiry, dietary request, or partnership..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">Send Message</button>
+            <div class="contact-feedback" id="contactFeedback">&check; Thanks! We'll reply in under 5 minutes.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- INTERACTIVE SLIDE-OUT CART DRAWER -->
+  <aside class="cart-drawer-backdrop" id="cartDrawerBackdrop" aria-hidden="true">
+    <div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Shopping Cart">
+      
+      <!-- Drawer Header -->
+      <div class="cart-header">
+        <div class="cart-title-wrap">
+          <h3 class="cart-title">Your Food Bag</h3>
+          <span class="cart-item-counter" id="cartHeaderCount">(2 items)</span>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+      </div>
+
+      <!-- Live Delivery Location Banner inside Cart -->
+      <div class="cart-delivery-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>Delivering to: <strong id="cartDeliveryAddress">Indiranagar, Bengaluru</strong></span>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div class="cart-items-list" id="cartItemsList">
+        
+        <!-- Cart Item 1 -->
+        <div class="cart-item" data-id="1">
+          <div class="cart-item-details">
+            <h4 class="cart-item-name">Truffle Cheese Smash Burger</h4>
+            <span class="cart-item-rest">Burger District</span>
+            <span class="cart-item-price">&#8377;249</span>
+          </div>
+          <div class="cart-qty-ctrl">
+            <button class="qty-btn btn-minus" data-id="1" aria-label="Decrease quantity">&minus;</button>
+            <span class="qty-num" data-id="1">1</span>
+            <button class="qty-btn btn-plus" data-id="1" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <!-- Cart Item 2 -->
+        <div class="cart-item" data-id="2">
+          <div class="cart-item-details">
+            <h4 class="cart-item-name">Classic Margherita Pizza</h4>
+            <span class="cart-item-rest">Napoli House</span>
+            <span class="cart-item-price">&#8377;349</span>
+          </div>
+          <div class="cart-qty-ctrl">
+            <button class="qty-btn btn-minus" data-id="2" aria-label="Decrease quantity">&minus;</button>
+            <span class="qty-num" data-id="2">1</span>
+            <button class="qty-btn btn-plus" data-id="2" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bill Breakdown & Checkout -->
+      <div class="cart-footer">
+        <!-- Coupon input -->
+        <div class="cart-coupon-box">
+          <input type="text" id="cartCouponInput" placeholder="Enter Promo Code" value="CRAVE50">
+          <button class="btn-apply-coupon" id="applyCouponBtn">Apply</button>
+        </div>
+        <div class="coupon-success-tag" id="couponFeedback">&check; Coupon <b>CRAVE50</b> applied! You saved &#8377;100</div>
+
+        <!-- Breakdown -->
+        <div class="bill-summary">
+          <div class="bill-row">
+            <span>Item Subtotal</span>
+            <span id="billSubtotal">&#8377;598</span>
+          </div>
+          <div class="bill-row">
+            <span>Delivery Fee</span>
+            <span class="text-green" id="billDelivery">FREE</span>
+          </div>
+          <div class="bill-row text-orange" id="discountRow">
+            <span>Promo Discount (CRAVE50)</span>
+            <span id="billDiscount">- &#8377;100</span>
+          </div>
+          <div class="bill-row">
+            <span>Taxes &amp; Restaurant Charges</span>
+            <span id="billTaxes">&#8377;35</span>
+          </div>
+          <div class="bill-divider"></div>
+          <div class="bill-row total-row">
+            <strong>To Pay</strong>
+            <strong class="total-price" id="billTotal">&#8377;533</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-checkout" id="checkoutBtn">
+          <span>Proceed to Checkout &bull; <span id="btnPayAmount">&#8377;533</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- SIGN IN & REGISTER MODAL -->
+  <div class="modal-backdrop" id="signInModal" aria-hidden="true">
+    <div class="auth-modal-dialog">
+      <div class="auth-header">
+        <div class="auth-brand">
+          <span class="logo-icon small-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V14h-1v2.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V11c0-1.66 1.34-3 3-3h1c1.66 0 3 1.34 3 3v3h-1v2.5h-1v-2.5zm4.5-.5c0 .55-.45 1-1 1s-1-.45-1-1V8.5c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5V16z"/>
+            </svg>
+          </span>
+          <span class="brand-name">CRAVE<span class="dot-accent">.</span></span>
+        </div>
+        <button class="auth-close" id="closeSignInBtn" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="auth-body">
+        <h3 class="auth-title">Welcome to CRAVE</h3>
+        <p class="auth-sub">Enter your phone or email to track orders and save your favorites.</p>
+
+        <form id="authForm" class="auth-form">
+          <div class="form-group">
+            <label for="authPhone">Phone Number or Email</label>
+            <input type="text" id="authPhone" placeholder="+91 98765 43210 or name@domain.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Continue with OTP</button>
+        </form>
+
+        <div class="auth-divider">
+          <span>or continue with</span>
+        </div>
+
+        <button class="btn-social google-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <p class="auth-terms">By signing in, you agree to our Terms of Service &bull; Privacy Policy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK TOAST NOTIFICATION -->
+  <div class="toast-bubble" id="craveToast" role="alert" aria-live="polite">
+    <div class="toast-inner">
+      <span class="toast-badge-icon">&check;</span>
+      <span class="toast-text" id="toastMessage">Item added to your bag!</span>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="main-footer">
+    <div class="container">
+      
+      <div class="footer-top-grid">
+        <!-- Brand Info -->
+        <div class="footer-col brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <span class="logo-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V14h-1v2.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5V11c0-1.66 1.34-3 3-3h1c1.66 0 3 1.34 3 3v3h-1v2.5h-1v-2.5zm4.5-.5c0 .55-.45 1-1 1s-1-.45-1-1V8.5c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5V16z"/>
+              </svg>
+            </span>
+            <span class="brand-name light-text">CRAVE<span class="dot-accent">.</span></span>
+          </a>
+          <p class="footer-tagline">&ldquo;Good food. Great mood.&rdquo;</p>
+          <p class="footer-summary">
+            India's most loved fast food delivery experience. Connecting neighborhood culinary masters directly to your home with guaranteed warmth and safety.
+          </p>
+        </div>
+
+        <!-- Links Col 1 -->
+        <div class="footer-col">
+          <h4 class="footer-title">Discover CRAVE</h4>
+          <ul class="footer-list">
+            <li><a href="#categories">Food Categories</a></li>
+            <li><a href="#restaurants">Popular Restaurants</a></li>
+            <li><a href="#offers">Special Offers &amp; Passes</a></li>
+            <li><a href="#">CRAVE Genie Delivery</a></li>
+            <li><a href="#">Gift Cards &amp; Perks</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 2 -->
+        <div class="footer-col">
+          <h4 class="footer-title">For Restaurants</h4>
+          <ul class="footer-list">
+            <li><a href="#">Partner with CRAVE</a></li>
+            <li><a href="#">Restaurant Dashboard</a></li>
+            <li><a href="#">Delivery Rider Portal</a></li>
+            <li><a href="#">Hygiene Verification</a></li>
+            <li><a href="#">Cloud Kitchen Franchise</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 3 -->
+        <div class="footer-col">
+          <h4 class="footer-title">Serving Cities</h4>
+          <ul class="footer-list">
+            <li><a href="#">Bengaluru</a></li>
+            <li><a href="#">Mumbai</a></li>
+            <li><a href="#">Delhi NCR</a></li>
+            <li><a href="#">Hyderabad</a></li>
+            <li><a href="#">Chennai &bull; Pune</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 CRAVE Technologies Private Limited. All rights reserved.</p>
+        <div class="footer-meta-links">
+          <a href="#">Privacy Policy</a>
+          <span class="sep">&bull;</span>
+          <a href="#">Terms of Use</a>
+          <span class="sep">&bull;</span>
+          <a href="#">Security</a>
+          <span class="sep">&bull;</span>
+          <span>Web Development Activity Project</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
